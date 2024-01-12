@@ -8,6 +8,14 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+    }
+}
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
     }
 }
 
@@ -36,5 +44,7 @@ dependencies {
     testAnnotationProcessor('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('org.springframework.boot:spring-boot-starter-mustache')
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
 
 }
